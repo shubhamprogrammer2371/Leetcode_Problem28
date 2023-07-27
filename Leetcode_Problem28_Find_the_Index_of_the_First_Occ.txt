@@ -1,0 +1,30 @@
+int strStr(char * haystack, char * needle){
+    int location=-1,i=0,j=0;
+    if(strlen(needle) > strlen(haystack))
+        return -1;
+    while(haystack[i] != '\0')
+    {
+        if(haystack[i] == needle[j])
+        {   
+            location = i;
+            j++;
+            i++;
+            while(needle[j] != '\0')
+            {
+                if(needle[j] != haystack[i])
+                {
+                    location = -1;
+                    i -= j;
+                    j=0;
+                    break;
+                }
+                i++;
+                j++;
+            }
+        }
+        if(location != -1)
+            break;
+        i++;
+    }
+    return location;
+}
